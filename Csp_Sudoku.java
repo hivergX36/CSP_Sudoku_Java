@@ -8,10 +8,7 @@ public class Csp_Sudoku {
     public int[][] data;
 
     public Csp_Sudoku() {
-        this.rows = 9;
-        this.cols = 9;
-        this.data = new int[9][9];
-
+      
     }
 
     public Csp_Sudoku(String filename) {
@@ -96,10 +93,10 @@ public class Csp_Sudoku {
         return true;
     }
 
-    public void solve_sudoku() {
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                if (data[i][j] == 0) { // Find an empty cell
+     void solve_sudoku() {
+        for (int i = 0; i < this.rows; i++) {
+            for (int j = 0; j < this.cols; j++) {
+                if (this.data[i][j] == 0) { // Find an empty cell
                     for (int val = 1; val <= 9; val++) {
                         if (check_sudoku_constraints(i, j, val)) {
                             this.set(i, j, val); // Place the value
@@ -113,6 +110,9 @@ public class Csp_Sudoku {
             }
 
         }
+
+        // If we reach here, the Sudoku is solved
+         System.out.println("Solved Sudoku:");
 
         this.display_matrix();
 
