@@ -8,7 +8,7 @@ public class Csp_Sudoku {
     public int[][] data;
 
     public Csp_Sudoku() {
-      
+
     }
 
     public Csp_Sudoku(String filename) {
@@ -113,7 +113,7 @@ public class Csp_Sudoku {
 
         }
 
-        return true;      
+        return true;
 
     }
 
