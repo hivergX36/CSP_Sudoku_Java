@@ -93,28 +93,27 @@ public class Csp_Sudoku {
         return true;
     }
 
-     void solve_sudoku() {
+    boolean solve_sudoku() {
         for (int i = 0; i < this.rows; i++) {
             for (int j = 0; j < this.cols; j++) {
                 if (this.data[i][j] == 0) { // Find an empty cell
                     for (int val = 1; val <= 9; val++) {
                         if (check_sudoku_constraints(i, j, val)) {
                             this.set(i, j, val); // Place the value
-                            this.solve_sudoku(); // Recursively try to solve the rest
-                            this.set(i, j, 0); // Backtrack
+                            if (solve_sudoku()) {
+                                return true;
+                            } else {
+                                this.set(i, j, 0); // Backtrack
+                            }
                         }
                     }
-
-                    return; // Return if no value can be placed
+                    return false;
                 }
             }
 
         }
 
-        // If we reach here, the Sudoku is solved
-         System.out.println("Solved Sudoku:");
-
-        this.display_matrix();
+        return true;      
 
     }
 
